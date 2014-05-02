@@ -1,0 +1,6 @@
+.mainWrap{
+	width: 756px;
+	height: 1024px;
+	background: url('/images/empty.gif') no-repeat;
+	background-size: 100% 100%;
+}
