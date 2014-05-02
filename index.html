@@ -22,7 +22,7 @@
             console.log("Test Log");
         };
         var callNative = function(param){
-            var nativeQuery = 'callNative://method=' + param;
+            var nativeQuery = 'callNative://method=' + param + '&toPortrait';
             console.log(nativeQuery);
             location.href = nativeQuery;
         };
