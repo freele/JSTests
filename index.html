@@ -18,11 +18,24 @@
         </div>
     </body>
     <script type="text/javascript">
+        var orientation = 0;
         var testLog = function(){
             console.log("Test Log");
         };
         var callNative = function(param){
-            var nativeQuery = 'callNative://method=' + param + '&toPortrait';
+            var newOrientation = null;
+            if (param == 'switchOrientation'){
+                newOrientation = 'toPortrait';
+                if (orientation){
+                    newOrientation = 'toLandscape';
+                }
+            }
+            orientation = !orientation;
+
+            if (newOrientation)
+                var nativeQuery = 'callNative://method=' + newOrientation;
+            else
+                var nativeQuery = 'callNative://method=' + param;
             console.log(nativeQuery);
             location.href = nativeQuery;
         };
