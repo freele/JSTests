@@ -9,9 +9,10 @@ app.use(express.static(path.join(__dirname, '')));
 
 app.set('view engine', 'jade');
 
-app.get('/', function(req, res) {
-  res.render('index.html');
-});
+app.route('/')
+	.get(function(req, res) {
+  		res.render('index.html');
+	});
 
 var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {

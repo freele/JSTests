@@ -9,11 +9,21 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-        <button onclick="testLog">Test Log</button>
+        <div class="mainWrap">
+            <button onclick="testLog()">Test Log</button>
+            <div style="clear:both;"></div>
+            <button onclick="callNative('photo')">Call Photo</button>
+        </div>
     </body>
     <script type="text/javascript">
         var testLog = function(){
             console.log("Test Log");
-        }
+        };
+        var callNative = function(param){
+            var nativeQuery = 'callNative://param=' + param;
+            console.log(nativeQuery);
+            location.href = nativeQuery;
+        };
+        
     </script>
 </html>
