@@ -2,6 +2,12 @@ body{
 	margin: 0px;
 }
 
+button{
+	width: 150px;
+	height: 30px;
+	margin-top: 20px;
+	margin-left: 20px;
+}
 .mainWrap{
 	width: 756px;
 	height: 1024px;

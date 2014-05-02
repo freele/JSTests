@@ -13,6 +13,8 @@
             <button onclick="testLog()">Test Log</button>
             <div style="clear:both;"></div>
             <button onclick="callNative('photo')">Call Photo</button>
+            <div style="clear:both;"></div>
+            <button onclick="callNative('switchOrientation')">Switch Orientation</button>
         </div>
     </body>
     <script type="text/javascript">
@@ -20,10 +22,10 @@
             console.log("Test Log");
         };
         var callNative = function(param){
-            var nativeQuery = 'callNative://param=' + param;
+            var nativeQuery = 'callNative://method=' + param;
             console.log(nativeQuery);
             location.href = nativeQuery;
         };
-        
+
     </script>
 </html>
