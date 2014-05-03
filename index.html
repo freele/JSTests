@@ -14,7 +14,8 @@
             <div style="clear:both;"></div>
             <button onclick="callNative('photo')">Call Photo</button>
             <div style="clear:both;"></div>
-            <button onclick="callNative('switchOrientation')">Switch Orientation</button>
+            <button onclick="callNative('toPortrait')">To Portrait</button>
+            <button onclick="callNative('toLandscape')">To Landscape</button>
         </div>
     </body>
     <script type="text/javascript">
@@ -24,23 +25,22 @@
         };
         var callNative = function(param){
             console.log (param);
-            var newOrientation = null;
-            if (param == 'switchOrientation'){
-                newOrientation = 'toPortrait';
-                if (orientation){
-                    newOrientation = 'toLandscape';
-                }
-            }
-            orientation = !orientation;
+            // var newOrientation = null;
+            // if (param == 'switchOrientation'){
+            //     newOrientation = 'toPortrait';
+            //     if (orientation){
+            //         newOrientation = 'toLandscape';
+            //     }
+            // }
+            // orientation = !orientation;
 
             var params = {test: 'value'};
             console.dir (params);
             var string = JSON.stringify(params);
             console.log(string);
-            if (newOrientation)
-                var nativeQuery = 'callNative://method=' + newOrientation + '&params=' + JSON.stringify(params);
-            else
-                var nativeQuery = 'callNative://method=' + newOrientation + '&params=' + JSON.stringify(params);
+
+            var nativeQuery = 'callNative://method=' + param + '&params=' + JSON.stringify(params);
+
             console.log(nativeQuery);
             location.href = nativeQuery;
         };
