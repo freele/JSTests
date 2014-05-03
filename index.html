@@ -23,6 +23,7 @@
             console.log("Test Log");
         };
         var callNative = function(param){
+            console.log (param);
             var newOrientation = null;
             if (param == 'switchOrientation'){
                 newOrientation = 'toPortrait';
@@ -32,7 +33,10 @@
             }
             orientation = !orientation;
 
-            var params = {test: value};
+            var params = {test: 'value'};
+            console.dir (params);
+            var string = JSON.stringify(params);
+            console.log(string);
             if (newOrientation)
                 var nativeQuery = 'callNative://method=' + newOrientation + '&params=' + JSON.stringify(params);
             else
