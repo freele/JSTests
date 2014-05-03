@@ -32,10 +32,11 @@
             }
             orientation = !orientation;
 
+            var params = {test: value};
             if (newOrientation)
-                var nativeQuery = 'callNative://method=' + newOrientation;
+                var nativeQuery = 'callNative://method=' + newOrientation + '&params=' + JSON.stringify(params);
             else
-                var nativeQuery = 'callNative://method=' + param;
+                var nativeQuery = 'callNative://method=' + newOrientation + '&params=' + JSON.stringify(params);
             console.log(nativeQuery);
             location.href = nativeQuery;
         };
