@@ -18,7 +18,8 @@
             <button onclick="callNative('toLandscape')">To Landscape</button>
         </div>
     </body>
-    <script src="bower_components/buzz/dist/buzz.js"></script>
+    <!-- <script src="bower_components/buzz/dist/buzz.js"></script> -->
+    <script src="js/web_audio_api.js"></script>
     <script type="text/javascript">
         var orientation = 0;
         var testLog = function(){
@@ -58,28 +59,46 @@
         };
 
         window.onload = function(){
-            var ambient = new buzz.sound( "./sounds/dub_night", {
-                formats: [ "mp3", "aac" ]
-            });
-            var belka = new buzz.sound( "./sounds/belka", {
-                formats: [ "mp3", "aac" ]
-            });
 
-            ambient.play()
-                .fadeIn()
-                .loop();
-                // .bind( "timeupdate", function() {
-                //    var timer = buzz.toTimer( this.getTime() );
-                //    document.getElementById( "timer" ).innerHTML = timer;
-                // });
+            // HTML5 tag lib (trash)
+            // var ambient = new buzz.sound( "./sounds/dub_night", {
+            //     formats: [ "mp3", "aac" ]
+            // });
+            // var belka = new buzz.sound( "./sounds/belka", {
+            //     formats: [ "mp3", "aac" ]
+            // });
 
-            var belka = new buzz.sound( "./sounds/belka", {
-                formats: [ "mp3", "aac" ]
-            });
+            // ambient.play()
+            //     .fadeIn()
+            //     .loop();
+            //     // .bind( "timeupdate", function() {
+            //     //    var timer = buzz.toTimer( this.getTime() );
+            //     //    document.getElementById( "timer" ).innerHTML = timer;
+            //     // });
+
+            // var belka = new buzz.sound( "./sounds/belka", {
+            //     formats: [ "mp3", "aac" ]
+            // });
+
+            // setInterval(function(){
+            //     belka.play();
+            // }, 5000)
+
+            var belka, ambient;
+
+            belka = new WebAudioAPISound("/sounds/belka");
+            ambient = new WebAudioAPISound("dub_night", {loop: true});
+
+            ambient.play();
 
             setInterval(function(){
                 belka.play();
             }, 5000)
+
+            setTimeout(function(){
+                ambient.stop();
+            }, 30 * 1000);
+
         }
 
     </script>
