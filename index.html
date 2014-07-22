@@ -86,18 +86,22 @@
 
             var belka, ambient;
 
-            belka = new WebAudioAPISound("/sounds/belka");
-            ambient = new WebAudioAPISound("/sounds/dub_night");
+            belka = new WebAudioAPISound("/sounds/belka", null, function(){
+                console.log('sound loaded');
+                belka.play();
+            });
+            // ambient = new WebAudioAPISound("/sounds/dub_night", null, null);
 
             // ambient.play();
 
-            setInterval(function(){
-                belka.play();
-            }, 10000)
+            // belka.play();
+            // setInterval(function(){
+            //     belka.play();
+            // }, 10000)
 
-            setTimeout(function(){
-                ambient.play();
-            }, 10000);
+            // setTimeout(function(){
+            //     ambient.play();
+            // }, 10000);
 
         }
 

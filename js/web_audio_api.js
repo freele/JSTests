@@ -18,7 +18,7 @@ try {
  * WebAudioAPISoundManager Prototype
  */
 WebAudioAPISoundManager.prototype = {
-     addSound: function (url) {
+     addSound: function (url, cb) {
         // Load buffer asynchronously
         var request = new XMLHttpRequest();
         request.open("GET", url, true);
@@ -37,7 +37,10 @@ WebAudioAPISoundManager.prototype = {
                         return;
                     }
                     self.bufferList[url] = buffer;
+                    if(cb)
+                        cb();
                 });
+
         };
 
         request.onerror = function () {
@@ -59,7 +62,7 @@ WebAudioAPISoundManager.prototype = {
 /*
  * WebAudioAPISound Constructor
  */
- var WebAudioAPISound = function (url, options) {
+ var WebAudioAPISound = function (url, options, cb) {
     this.settings = {
         loop: false
     };
@@ -72,7 +75,7 @@ WebAudioAPISoundManager.prototype = {
     this.url = url + '.mp3';
     window.webAudioAPISoundManager = window.webAudioAPISoundManager || new WebAudioAPISoundManager(window.audioContext);
     this.manager = window.webAudioAPISoundManager;
-    this.manager.addSound(this.url);
+    this.manager.addSound(this.url, cb);
 };
 
 /*
