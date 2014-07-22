@@ -87,13 +87,13 @@
             var belka, ambient;
 
             belka = new WebAudioAPISound("/sounds/belka");
-            ambient = new WebAudioAPISound("dub_night", {loop: true});
+            ambient = new WebAudioAPISound("/sounds/dub_night", {loop: true});
 
             ambient.play();
 
             setInterval(function(){
                 belka.play();
-            }, 5000)
+            }, 10000)
 
             setTimeout(function(){
                 ambient.stop();
